@@ -1,0 +1,59 @@
+[33m3d61390[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m it again showing error so undo all the things yu did for ADMIN DASHBOARD
+[33m958b784[m The app isn't starting. Please investigate what could be wrong based on
+[33me763fa2[m now do this ADMIN DASHBOARD FUNCTIONALITIES Dashboard Overview Visitor A
+[33m0a73026[m now when i try to sign in its not redirecting instead it styas in the sa
+[33m7f8a54d[m no the one that opened the camera and deteced the thingd
+[33m78fcada[m you missed the live detection option i had which deted the crowd correct
+[33m284b318[m not this the one with the detection and user admin and woker role switch
+[33mbda93b0[m The app isn't starting. Please investigate what could be wrong based on
+[33m64843ab[m undo all the changes you mage and get me back to the one version that wo
+[33m48e6cb7[m i am getting this Error: ./node_modules/google-auth-library/build/src/au
+[33mf038c28[m Try fixing this error: `Build Error: Module not found: Can't resolve 'ch
+[33mfef9c9a[m ADMIN DASHBOARD FUNCTIONALITIES Dashboard Overview Visitor Analytics: Re
+[33mf9fb66b[m i got it now for admin and worker page i wantorker Dashboard:
+[33ma4e6656[m it still spins
+[33m7c0cf08[m i tried to signupas admin but its just keeps loading
+[33md511bbf[m it got fixed .now if can i switch users
+[33mf769072[m it is still spinning instead of triyng to fix it remove it do it in anot
+[33m6fd2afd[m there isnt any option to switch between users
+[33m5133a4c[m give it for all pages because its just a prototype
+[33mcd8efa6[m it is still spinning is it possible to switch to other users like the am
+[33m2323ff1[m it still spins do something its frustrating
+[33m2a9d315[m its still spinning
+[33md779052[m it is still spinning fix it if i want to logout i cant
+[33m1f29f14[m as you can se i have logged in the top right corner the logoutbutton is
+[33mf8c0ffc[m it says succesfully signed in but not redirecting
+[33mf741643[m its not working lets remove the google integration for now and do other
+[33md6a9db2[m the signup/signin option itself i missing
+[33mc028e64[m it is not redirecting insted of redirecring to the home page try to redi
+[33m8f6853a[m still no change fix that immeditately i need to move on i am getting stu
+[33me3556e6[m still no change start again and fix it
+[33m0c36d93[m still its getting stuck in the same page fix it  immeditaely i am gettin
+[33ma355a6a[m it is not redirecring do i need to create the worker and management page
+[33m5852859[m after ignup i wan it to redirect it to the main page
+[33mdcca095[m i have sign in with googl then it render to same reg page but it need to
+[33m31bfdc4[m after registration it comes to the same page
+[33mdaff55d[m it shows
+[33m1ee4aa9[m check the web automatically anf if you found any erroe fix it
+[33mf4e6df0[m FirebaseError: Firebase: Error (auth/popup-closed-by-user).     at creat
+[33m443a178[m // Import the functions you need from the SDKs you need import { initial
+[33m482b19c[m File changes
+[33md487b6b[m FirebaseError: Firebase: Error (auth/configuration-not-found).     at cr
+[33mb65e538[m File changes
+[33mdaab2e7[m Set up a Firebase project
+[33m5d18cdb[m i need to login with goole so give me step by step guidance for that
+[33mc3bc0f2[m AIzaSyAi-zha_0ML1oUt-ptoFCFLdWz41j1cHQk
+[33mb01fe2e[m "Fix the Firebase Authentication API key error in my TempleConnect app.
+[33m7decac3[m Worker Dashboard:
+[33mb312833[m I need:
+[33m697f7a8[m Error: A component is changing an uncontrolled input to be controlled. T
+[33m24013f8[m Error: ReactDOM.useFormState has been renamed to React.useActionState. P
+[33m3a134b7[m Based on your screenshot showing the temple corridor view and your reque
+[33mc0ab4b7[m Based on your website screenshot showing the TempleConnect Maps interfac
+[33m7958c4f[m yea build it
+[33m2b8a8a4[m in this ticket box i want a working qr to be displayed not a dummy one l
+[33m4ec6b27[m What's next on our list? We have:
+[33maac1a6b[m do code
+[33md1e5ee4[m Here’s a **carefully crafted prompt** you can use to instruct a develope
+[33m26efa8f[m Initial prototype
+[33m253f92e[m Initialized workspace with Firebase Studio
