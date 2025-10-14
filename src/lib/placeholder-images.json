@@ -9,7 +9,7 @@
     {
       "id": "somnath-temple",
       "description": "The Somnath Temple by the sea",
-      "imageUrl": "https://images.unsplash.com/photo-1591700430569-9469d38b1006?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxTb21uYXRoJTIwdGVtcGxlfGVufDB8fHx8MTc1ODg2MzIwM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://storage.googleapis.com/gcp-kms-public/dev-ai-studio-user-be242ab9-f89a-4c28-98f2-89241f391e31/20090827-Somnath_Temple.jpg",
       "imageHint": "Somnath temple"
     },
     {
@@ -33,7 +33,7 @@
     {
       "id": "somnath-map",
       "description": "The Somnath Temple by the sea",
-      "imageUrl": "https://i.imgur.com/g82a20r.jpeg",
+      "imageUrl": "https://storage.googleapis.com/gcp-kms-public/dev-ai-studio-user-be242ab9-f89a-4c28-98f2-89241f391e31/20090827-Somnath_Temple.jpg",
       "imageHint": "Somnath temple"
     },
     {
