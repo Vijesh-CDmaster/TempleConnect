@@ -70,8 +70,7 @@ export function SignUpForm() {
         description: "Redirecting...",
       });
 
-      // No need to setIsLoading(false) here because we are redirecting
-      router.push('/temples');
+      router.push('/dashboard');
       
     } catch (error: any) {
       console.error("Sign up error:", error);
