@@ -56,6 +56,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return () => unsubscribe();
   }, [pathname, router]);
 
+  useEffect(() => {
+    // Safely access localStorage only on the client side after mounting
+    if (typeof window !== 'undefined') {
+      const storedImpersonation = localStorage.getItem('impersonatedRole');
+      if (storedImpersonation) {
+        setImpersonatedRole(storedImpersonation as Role);
+      }
+    }
+  }, []);
+
   const currentRole = impersonatedRole || trueRole;
   const isImpersonating = !!impersonatedRole;
 
@@ -63,8 +73,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     if (trueRole === 'admin') {
         if (role === 'admin' || role === null) {
             setImpersonatedRole(null);
+            localStorage.removeItem('impersonatedRole');
         } else {
             setImpersonatedRole(role);
+            localStorage.setItem('impersonatedRole', role);
         }
     }
   }
