@@ -50,15 +50,16 @@ This project requires two separate development servers to run concurrently: one 
 2.  In the **first terminal**, start the Next.js development server:
 
     ```bash
-    npm run dev
-    ```
-    Your application will be available at `http://localhost:9002`.
+        npm run dev
+            ```
+                Your application will be available at `http://localhost:9002`.
 
-3.  In the **second terminal**, start the Genkit development server:
+                3.  In the **second terminal**, start the Genkit development server:
 
-    ```bash
-    npm run genkit:dev
-    ```
-    This will start the Genkit development UI, which you can use to inspect your AI flows.
+                    ```bash
+                        npm run genkit:dev
+                            ```
+                                This will start the Genkit development UI, which you can use to inspect your AI flows.
 
-You're all set! You can now edit the code in VS Code, and the changes will be reflected in your local browser.
+                                You're all set! You can now edit the code in VS Code, and the changes will be reflected in your local browser.
+                                

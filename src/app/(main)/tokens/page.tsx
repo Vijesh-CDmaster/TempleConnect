@@ -8,13 +8,17 @@ import { temples } from "@/lib/temple-data";
 import { format } from "date-fns";
 import { Ticket, Calendar, Clock, User, Hash } from "lucide-react";
 import QRCode from "react-qr-code";
+import { isTokenExpired } from "@/lib/token-utils";
 
 export default function MyTokensPage() {
-  const [tokens, setTokens] = useState<SavedToken[]>([]);
+  const [activeTokens, setActiveTokens] = useState<SavedToken[]>([]);
 
   useEffect(() => {
-    const storedTokens = JSON.parse(localStorage.getItem("darshanTokens") || "[]");
-    setTokens(storedTokens.sort((a: SavedToken, b: SavedToken) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()));
+    const allTokens = JSON.parse(localStorage.getItem("darshanTokens") || "[]");
+    const active = allTokens
+      .filter((token: SavedToken) => !isTokenExpired(token))
+      .sort((a: SavedToken, b: SavedToken) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    setActiveTokens(active);
   }, []);
 
   return (
@@ -24,13 +28,13 @@ export default function MyTokensPage() {
           My Darshan Tokens
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          View all your generated virtual queue tokens here.
+          View your upcoming and active virtual queue tokens here.
         </p>
       </div>
 
-      {tokens.length > 0 ? (
+      {activeTokens.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {tokens.map((token) => {
+          {activeTokens.map((token) => {
             const temple = temples.find((t) => t.id === token.temple);
             const qrCodeValue = JSON.stringify({
                 tokenId: token.id,
@@ -70,8 +74,8 @@ export default function MyTokensPage() {
       ) : (
         <div className="text-center py-16 border-2 border-dashed rounded-lg">
           <Ticket className="h-16 w-16 mx-auto text-muted-foreground/50 mb-4" />
-          <h2 className="text-2xl font-semibold">No Tokens Found</h2>
-          <p className="text-muted-foreground mt-2">You haven't booked any darshan tokens yet.</p>
+          <h2 className="text-2xl font-semibold">No Active Tokens Found</h2>
+          <p className="text-muted-foreground mt-2">You haven't booked any darshan tokens yet, or your previous tokens have expired.</p>
         </div>
       )}
     </div>

@@ -10,6 +10,7 @@ const navLinks = [
   { href: "/temples", label: "Temples" },
   { href: "/queue", label: "Virtual Queue" },
   { href: "/tokens", label: "My Tokens" },
+  { href: "/history", label: "History" },
   { href: "/status", label: "Live Status" },
   { href: "/maps", label: "Maps" },
 ];
