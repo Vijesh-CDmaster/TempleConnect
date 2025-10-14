@@ -87,7 +87,8 @@ export function SignUpForm() {
         title: "Sign Up Failed",
         description: description,
       });
-      setIsLoading(false);
+    } finally {
+        setIsLoading(false);
     }
   }
 
