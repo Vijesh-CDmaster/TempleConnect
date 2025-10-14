@@ -23,6 +23,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+       {
+        protocol: 'https' ,
+        hostname: 'i.imgur.com',
+        port: '',
+        pathname: '/**',
+      },
       {
         protocol: 'https',
         hostname: 'picsum.photos',
@@ -31,9 +37,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-   allowedDevOrigins: [
-      "https://6000-firebase-studio-1758862367967.cluster-aic6jbiihrhmyrqafasatvzbwe.cloudworkstations.dev",
-  ],
 };
 
 export default nextConfig;
