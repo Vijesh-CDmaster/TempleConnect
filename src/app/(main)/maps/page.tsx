@@ -29,7 +29,7 @@ export default function MapsPage() {
                   src={temple.mapImage.imageUrl}
                   alt={temple.mapImage.description}
                   fill
-                  className="object-contain"
+                  className="object-cover"
                   data-ai-hint={temple.mapImage.imageHint}
                 />
               </div>
