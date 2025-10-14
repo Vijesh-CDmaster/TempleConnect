@@ -37,6 +37,23 @@ export async function setUserDisabledStatus(uid: string, disabled: boolean): Pro
     return { success: true, message: data.message };
 }
 
+export async function clearAllUserData(): Promise<{success: boolean, message: string}> {
+    const response = await fetch(`/api/users/clear`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        return { success: false, message: data.message || 'An unknown error occurred.' };
+    }
+    return { success: true, message: data.message };
+}
+
+
 // These functions call an API route and are safe for client-side usage
 export async function getTotalUsers(): Promise<number> {
     const response = await fetch('/api/stats/total-users');

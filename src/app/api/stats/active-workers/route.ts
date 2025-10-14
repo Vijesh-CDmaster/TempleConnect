@@ -1,6 +1,6 @@
 
 import { NextResponse } from 'next/server';
-import { initializeAdmin } from '@/lib/firebase';
+import { initializeAdmin } from '@/lib/firebase-admin';
 
 const { adminDb } = initializeAdmin();
 

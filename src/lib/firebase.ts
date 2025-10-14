@@ -2,7 +2,10 @@
 import { initializeApp, getApps, getApp, FirebaseOptions } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import * as admin from 'firebase-admin';
 
+// Your web app's Firebase configuration
+// This is for client-side initialization
 const firebaseConfig: FirebaseOptions = {
   apiKey: "AIzaSyCiCvJmRY1jBxfOFLNZggBkvOHK-4NS41k",
   authDomain: "studio-2441954507-47728.firebaseapp.com",
@@ -16,6 +19,7 @@ const firebaseConfig: FirebaseOptions = {
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const auth = getAuth(app);
 const db = getFirestore(app);
+
 
 export { app, auth, db };
 export type { User } from 'firebase/auth';
