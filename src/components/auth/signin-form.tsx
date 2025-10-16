@@ -48,20 +48,41 @@ export function SignInForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
 
-    // Simulate a successful login and assign a default role.
-    const user = {
-      email: values.email,
-      role: 'user' as const,
-    };
+      const data = await response.json();
 
-    login(user); // Set user in AuthContext
-
-    toast({
-      title: "Signed In",
-      description: "You have successfully signed in.",
-    });
-    router.push('/dashboard');
+      if (response.ok) {
+        login(data); // The API returns the user object on success
+        toast({
+          title: "Signed In",
+          description: "You have successfully signed in.",
+        });
+        router.push('/dashboard');
+      } else {
+        toast({
+          title: "Sign-In Failed",
+          description: data.message || "An unexpected error occurred.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Sign-in submission error", error);
+      toast({
+        title: "Sign-In Failed",
+        description: "An unexpected error occurred.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   if (!isMounted) {

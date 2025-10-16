@@ -51,17 +51,41 @@ export function SignUpForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    const user = {
-      email: values.email,
-      role: values.role,
-    };
-    login(user);
-    toast({
-        title: "Account Created",
-        description: "Redirecting...",
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
       });
 
-      router.push('/dashboard');
+      const data = await response.json();
+
+      if (response.ok) {
+        login(data); // The API returns the user object on success
+        toast({
+          title: "Account Created",
+          description: "You have been successfully signed up. Redirecting...",
+        });
+        router.push('/dashboard');
+      } else {
+        toast({
+          title: "Registration Failed",
+          description: data.message || "An unexpected error occurred.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Registration submission error", error);
+      toast({
+        title: "Registration Failed",
+        description: "An unexpected error occurred.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   if (!isMounted) {
