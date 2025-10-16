@@ -3,7 +3,7 @@ import { PT_Sans } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
-import { AuthProvider } from '@/hooks/use-auth';
+import { AuthProvider } from '@/context/auth-context';
 
 const ptSans = PT_Sans({
   subsets: ['latin'],

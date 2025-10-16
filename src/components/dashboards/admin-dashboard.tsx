@@ -1,7 +1,5 @@
-
 "use client";
 
-import type { User } from 'firebase/auth';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useToast } from '@/hooks/use-toast';
@@ -11,11 +9,7 @@ import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { clearAllUserData } from '@/lib/user-service';
 
-interface AdminDashboardProps {
-    user: User;
-}
-
-export function AdminDashboard({ user }: AdminDashboardProps) {
+export function AdminDashboard() {
     const { toast } = useToast();
     const router = useRouter();
     const [isPending, startTransition] = useTransition();

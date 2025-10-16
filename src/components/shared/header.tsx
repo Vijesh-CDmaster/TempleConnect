@@ -5,13 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, LogOut, User } from "lucide-react";
+import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MobileNav } from "./mobile-nav";
 import { OmIcon } from "../icons/om-icon";
 import { useState } from "react";
-import { useAuth } from "@/hooks/use-auth";
-import { auth } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 
 const navLinks = [
@@ -27,37 +25,9 @@ const navLinks = [
 export function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { user } = useAuth();
   const router = useRouter();
 
-  const handleSignOut = async () => {
-    await auth.signOut();
-    router.push('/');
-  }
-
   const renderAuthButtons = () => {
-    // We removed the loading spinner to fix the perpetual spinning issue.
-    // We now directly check for the user object.
-    if (user) {
-      return (
-        <div className="hidden md:flex items-center space-x-2">
-          <Link
-            href="/dashboard"
-            className={cn(
-              "text-sm font-medium transition-colors hover:text-foreground/80",
-              pathname === "/dashboard" ? "text-foreground" : "text-foreground/60"
-            )}
-          >
-            Dashboard
-          </Link>
-          <Button variant="ghost" size="icon" onClick={handleSignOut}>
-            <LogOut className="h-5 w-5" />
-            <span className="sr-only">Sign Out</span>
-          </Button>
-        </div>
-      );
-    }
-
     return (
       <div className="hidden md:flex items-center space-x-2">
         <Button asChild variant="ghost">

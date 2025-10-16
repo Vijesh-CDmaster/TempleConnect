@@ -6,7 +6,7 @@ import { Footer } from "@/components/shared/footer";
 import { Header } from "@/components/shared/header";
 import { Toaster } from "@/components/ui/toaster";
 import { RoleSwitcher } from "@/components/role-switcher";
-import { useAuth } from "@/hooks/use-auth";
+import { useAuth } from "@/context/auth-context";
 import { Loader2 } from "lucide-react";
 
 // Define which routes are protected

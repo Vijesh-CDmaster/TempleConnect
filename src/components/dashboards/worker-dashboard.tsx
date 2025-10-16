@@ -1,17 +1,12 @@
-
 "use client";
 
 import { useState } from 'react';
-import type { User } from 'firebase/auth';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCheck, CalendarDays, ClipboardList, LogIn, LogOut } from "lucide-react";
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
-
-interface WorkerDashboardProps {
-    user: User;
-}
+import { useAuth } from '@/context/auth-context';
 
 type TaskStatus = "Pending" | "Completed";
 
@@ -27,10 +22,11 @@ const initialTasks: Task[] = [
     { id: 3, description: "Morning cleaning duty at main sanctum", status: "Completed" },
 ]
 
-export function WorkerDashboard({ user }: WorkerDashboardProps) {
+export function WorkerDashboard() {
     const [tasks, setTasks] = useState<Task[]>(initialTasks);
     const [isClockedIn, setIsClockedIn] = useState(false);
     const { toast } = useToast();
+    const { logout } = useAuth();
 
     const handleClockInToggle = () => {
         setIsClockedIn(!isClockedIn);
@@ -47,7 +43,7 @@ export function WorkerDashboard({ user }: WorkerDashboardProps) {
                     const newStatus = task.status === "Pending" ? "Completed" : "Pending";
                     toast({
                         title: `Task ${newStatus}`,
-                        description: `"${task.description}" marked as ${newStatus.toLowerCase()}.`
+                        description: `\"${task.description}\" marked as ${newStatus.toLowerCase()}.`
                     });
                     return {...task, status: newStatus};
                 }
@@ -66,13 +62,20 @@ export function WorkerDashboard({ user }: WorkerDashboardProps) {
                     <CardTitle>Attendance</CardTitle>
                     <CardDescription>{isClockedIn ? "You are currently on shift." : "Clock in to start your shift."}</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="space-y-2">
                     <Button 
                         className={cn("w-full", isClockedIn && "bg-yellow-500 hover:bg-yellow-600")}
                         onClick={handleClockInToggle}
                     >
                         {isClockedIn ? <LogOut className="mr-2"/> : <LogIn className="mr-2"/>}
                         {isClockedIn ? "Clock Out" : "Clock In"}
+                    </Button>
+                    <Button 
+                        variant="outline" 
+                        className="w-full"
+                        onClick={logout}
+                    >
+                        Sign Out
                     </Button>
                 </CardContent>
             </Card>

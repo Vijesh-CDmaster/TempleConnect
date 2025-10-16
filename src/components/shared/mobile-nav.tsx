@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import { OmIcon } from "../icons/om-icon";
-import { useAuth } from "@/hooks/use-auth";
+import { useAuth } from "@/context/auth-context";
 import { Button } from "@/components/ui/button";
 import { auth } from "@/lib/firebase";
 
