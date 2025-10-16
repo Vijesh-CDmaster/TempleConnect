@@ -27,7 +27,11 @@ import { useAuth } from "@/context/auth-context";
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
   password: z.string().min(6, { message: "Password must be at least 6 characters." }),
+  confirmPassword: z.string(),
   role: z.enum(["user", "worker", "admin"], { required_error: "Please select a role." }),
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Passwords do not match",
+  path: ["confirmPassword"],
 });
 
 export function SignUpForm() {
@@ -35,6 +39,7 @@ export function SignUpForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const router = useRouter();
   const { login } = useAuth();
 
@@ -47,6 +52,7 @@ export function SignUpForm() {
     defaultValues: {
       email: "",
       password: "",
+      confirmPassword: "",
       role: "user",
     },
   });
@@ -59,13 +65,13 @@ export function SignUpForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ email: values.email, password: values.password, role: values.role }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        login(data); // The API returns the user object on success
+        login(data);
         toast({
           title: "Account Created",
           description: "You have been successfully signed up. Redirecting...",
@@ -133,6 +139,28 @@ export function SignUpForm() {
                         className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400"
                       >
                         {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                      </button>
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="confirmPassword"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Re-enter Password</FormLabel>
+                  <FormControl>
+                    <div className="relative">
+                      <Input type={showConfirmPassword ? "text" : "password"} placeholder="••••••••" {...field} />
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400"
+                      >
+                        {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                       </button>
                     </div>
                   </FormControl>
