@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from 'react';
-import { useAuth } from "@/hooks/use-auth";
+import { useAuth } from "@/context/auth-context";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { AdminDashboard } from "@/components/dashboards/admin-dashboard";

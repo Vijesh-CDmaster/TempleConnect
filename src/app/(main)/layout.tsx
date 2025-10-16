@@ -5,12 +5,11 @@ import { usePathname, useRouter } from "next/navigation";
 import { Footer } from "@/components/shared/footer";
 import { Header } from "@/components/shared/header";
 import { Toaster } from "@/components/ui/toaster";
-import { RoleSwitcher } from "@/components/role-switcher";
 import { useAuth } from "@/context/auth-context";
 import { Loader2 } from "lucide-react";
 
 // Define which routes are protected
-const protectedRoutes = ["/dashboard", "/queue", "/tokens", "/history", "/status", "/maps"];
+const protectedRoutes = ["/queue", "/tokens", "/history", "/status", "/maps"];
 
 export default function MainLayout({
   children,
@@ -44,11 +43,6 @@ export default function MainLayout({
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-1">
-          {trueRole === 'admin' && user && (
-            <div className="container py-4">
-               <RoleSwitcher />
-            </div>
-          )}
           {children}
         </main>
         <Footer />

@@ -31,21 +31,39 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [impersonatedRole, setImpersonatedRole] = useState<Role | null>(null);
 
   useEffect(() => {
-    // Simulate loading user from a session
-    setTimeout(() => {
-      const mockUser = { email: 'test@example.com', role: 'admin' as const };
-      setUser(mockUser);
-      setTrueRole(mockUser.role);
+    try {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        setUser(parsedUser);
+        setTrueRole(parsedUser.role);
+      }
+    } catch (error) {
+      console.error("Failed to parse user from localStorage", error);
+      // If parsing fails, treat as no user logged in.
+      setUser(null);
+      setTrueRole(null);
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   }, []);
 
   const login = (userData: User) => {
-    setUser(userData);
-    setTrueRole(userData.role);
+    try {
+      localStorage.setItem('user', JSON.stringify(userData));
+      setUser(userData);
+      setTrueRole(userData.role);
+    } catch (error) {
+      console.error("Failed to save user to localStorage", error);
+    }
   };
 
   const logout = () => {
+    try {
+      localStorage.removeItem('user');
+    } catch (error) {
+      console.error("Failed to remove user from localStorage", error);
+    }
     setUser(null);
     setTrueRole(null);
     setImpersonatedRole(null);

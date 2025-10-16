@@ -8,6 +8,7 @@ import { Siren, Users, Calendar, BarChart2, Trash2, AlertTriangle, Loader2 } fro
 import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { clearAllUserData } from '@/lib/user-service';
+import { RoleSwitcher } from '@/components/role-switcher';
 
 export function AdminDashboard() {
     const { toast } = useToast();
@@ -47,6 +48,7 @@ export function AdminDashboard() {
 
     return (
         <div className="space-y-8">
+            <RoleSwitcher />
             <Card>
                 <CardHeader>
                     <CardTitle>Management Console</CardTitle>
